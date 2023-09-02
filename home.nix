@@ -30,6 +30,7 @@
     enable = true;
     shellAliases = {
       szsh = "source ~/.zshrc";
+      scalashell = "nix-shell ./shells/scala.nix";
     };
   };
 
