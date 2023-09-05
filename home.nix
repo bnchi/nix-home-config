@@ -28,10 +28,16 @@
 
   programs.zsh = { 
     enable = true;
+    enableCompletion = true;
+    enableAutosuggestions = true;
     shellAliases = {
       szsh = "source ~/.zshrc";
+      nixswitch = "home-manager switch && source ~/.zshrc";
       scalashell = "nix-shell ./shells/scala.nix";
     };
+    initExtraFirst = ''
+      export PS1="> \$ "
+    '';
   };
 
   programs.tmux = { 
