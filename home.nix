@@ -8,6 +8,9 @@
   home.stateVersion = "23.05"; # Please read the comment before changing.
 
   home.packages = with pkgs; [
+    podman
+    qemu
+
     # nodejs stuff
     yarn
     nodejs
@@ -34,6 +37,7 @@
       szsh = "source ~/.zshrc";
       nixswitch = "home-manager switch && source ~/.zshrc";
       scalashell = "nix-shell ./shells/scala.nix";
+      javashell = "nix-shell ./shells/java.nix";
     };
     initExtraFirst = ''
       export PS1="> \$ "
