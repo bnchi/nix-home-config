@@ -12,16 +12,10 @@
     nodejs
     nodePackages.typescript
     nodePackages.typescript-language-server
-
-    rustup
-
-    gopls
     ripgrep
-
     qemu
     minikube
     kubectl
-    flyctl
   ];
 
   home.sessionVariables = {
@@ -36,11 +30,10 @@
     shellAliases = {
       szsh = "source ~/.zshrc";
       nixswitch = "home-manager switch && source ~/.zshrc";
-      scalashell = "nix-shell ~/.config/home-manager/shells/scala.nix";
-      nestshell = "nix-shell ~/.config/home-manager/shells/nest.nix";
-      postgresshell = "nix-shell ~/.config/home-manager/shells/postgres.nix";
-      bunshell = "nix-shell ~/.config/home-manager/shells/bun.nix";
-      pythonshell = "nix-shell ~/.config/home-manager/shells/python3.nix";
+      scala-dev = "nix-shell ~/.config/home-manager/shells/scala.nix";
+      postgres-dev = "nix-shell ~/.config/home-manager/shells/postgres.nix";
+      python-dev = "nix-shell ~/.config/home-manager/shells/python3.nix";
+      rust-dev = "nix-shell ~/.config/home-manager/shells/rust.nix";
     };
     initExtraFirst = ''
       export PS1="> \$ "
