@@ -1,7 +1,7 @@
 with import <nixpkgs> {};
 
 mkShell {
-  name = "python";
+  name = "rust";
   buildInputs = with pkgs; [
     rustc 
     cargo 

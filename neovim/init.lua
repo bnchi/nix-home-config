@@ -1,14 +1,11 @@
-vim.g.mapleader = " "
+vim.cmd('colorscheme gruvbox')
+vim.api.nvim_create_autocmd('Filetype', { pattern = 'rust', command = 'set colorcolumn=100' })
 
-require 'nvim-treesitter.configs'.setup {
-  highlight = {
-    enable = true,
-    additional_vim_regex_highlighting = false
-  }
-}
+vim.g.mapleader = " "
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+vim.keymap.set('n', '<leader>se', vim.diagnostic.open_float)
 
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
@@ -40,28 +37,24 @@ require 'cmp'.setup {
   }
 }
 
--- LSP SERVERS
+-- Rust stuff
+vim.g.rustfmt_autosave = 1
+vim.g.rustfmt_emit_files = 1
+vim.g.rustfmt_fail_silently = 0
+
 require 'lspconfig'.rust_analyzer.setup {
   settings = {
     ['rust-analyzer'] = {
+      cachePriming = {
+        enable = false,
+      },
+      checkOnSave = false,
       cargo = {
         allFeatures = true,
       },
-      completion = {
-        postfix = {
-          enable = false,
-        },
-      }
     }
   }
 }
+
 require 'lspconfig'.tsserver.setup { capabilities = capabilities }
 require 'lspconfig'.gopls.setup { capabilities = capabilities }
-
-function rust_config()
-  vim.g.rustfmt_autosave = 1
-  vim.g.rustfmt_emit_files = 1
-  vim.g.rustfmt_fail_silently = 0
-end
-
-rust_config()

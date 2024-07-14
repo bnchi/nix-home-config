@@ -1,4 +1,16 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
+
+let
+  fromGitHub = ref: repo: pkgs.vimUtils.buildVimPlugin {
+    pname = "${lib.strings.sanitizeDerivationName repo}";
+    version = ref;
+    src = builtins.fetchGit {
+      url = "https://github.com/${repo}.git";
+      ref = ref;
+    };
+  };
+in
+
 
 {
   # manage.
@@ -12,10 +24,21 @@
     nodejs
     nodePackages.typescript
     nodePackages.typescript-language-server
+    nodePackages_latest.prettier
+
     ripgrep
     qemu
     minikube
     kubectl
+
+    typos-lsp
+
+    mysql80
+    htop
+    nginx
+    wrk
+    toybox
+    zld
   ];
 
   home.sessionVariables = {
@@ -35,6 +58,7 @@
       python-dev = "nix-shell ~/.config/home-manager/shells/python3.nix";
       rust-dev = "nix-shell ~/.config/home-manager/shells/rust.nix";
     };
+    sessionVariables = {};
     initExtraFirst = ''
       export PS1="> \$ "
     '';
@@ -70,10 +94,8 @@
       plenary-nvim
       telescope-nvim
       nvim-lspconfig
-      gruvbox
-      (nvim-treesitter.withPlugins (p: [ p.c p.rust p.lua ]))
       rust-vim
-
+      gruvbox
       # completions
       nvim-cmp
       cmp-nvim-lsp
