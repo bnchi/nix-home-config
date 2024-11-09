@@ -44,6 +44,9 @@ in
     nodejs
     nodePackages.typescript
     nodePackages.typescript-language-server
+
+    streamlink
+    jq
   ];
 
   programs.neovim = vimsettings;
@@ -55,10 +58,10 @@ in
   };
 
   xsession.windowManager.i3 = {
-    enable = true;
-    config = {
-      keybindings = import ./i3-keybindings.nix "Mod4";
-    };
+   enable = true;
+   config = {
+     keybindings = import ./i3-keybindings.nix "Mod4";
+   };
   };
 
   programs.git = {
@@ -74,6 +77,8 @@ in
       init.defaultBranch = "main";
     };
   };
+
+  programs.mpv.enable = true;
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
