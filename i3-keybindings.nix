@@ -28,6 +28,8 @@ mod:
   "${mod}+r" = "mode \"resize\"";
   "${mod}+Shift+f" = "floating toggle";
   "${mod}+space" = "focus mode_toggle";
+  "${mod}+shift+e" = "exec i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'";
+  "${mod}+d" = "exec --no-startup-id rofi -modi drun -show drun";
   "${mod}+1" = "workspace 1";
   "${mod}+2" = "workspace 2";
   "${mod}+3" = "workspace 3";
@@ -37,7 +39,6 @@ mod:
   "${mod}+7" = "workspace 7";
   "${mod}+8" = "workspace 8";
   "${mod}+9" = "workspace 9";
-  "${mod}+0" = "workspace 10";
   "${mod}+Shift+1" = "move container to workspace 1";
   "${mod}+Shift+2" = "move container to workspace 2";
   "${mod}+Shift+3" = "move container to workspace 3";
@@ -47,6 +48,5 @@ mod:
   "${mod}+Shift+7" = "move container to workspace 7";
   "${mod}+Shift+8" = "move container to workspace 8";
   "${mod}+Shift+9" = "move container to workspace 9";
-  "${mod}+Shift+0" = "move container to workspace 10";
   "${mod}+Shift+r" = "restart";
 }
