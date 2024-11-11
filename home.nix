@@ -5,7 +5,7 @@ let
  tmuxsettings = import ./tmux.nix;
  rustpkgs = import <nixpkgs> { overlays = [(import <rust-overlay>)]; };
  rustlatest = rustpkgs.rust-bin.stable.latest.default.override {
-   extensions = ["rust-analyzer"];
+   extensions = ["rust-analyzer" "rust-src"];
   };
 in
 {
