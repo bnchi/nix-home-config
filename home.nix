@@ -73,10 +73,11 @@ in
     extraConfig = {
       branch.autosetuprebase = "always";
       color.ui = true;
-      core.askPass = ""; # needs to be empty to use the terminal for ask pass
-      github.user = "bnchi";
       push.default = "tracking";
       init.defaultBranch = "main";
+      credential.helper = "${
+          pkgs.git.override { withLibsecret = true; }
+        }/bin/git-credential-libsecret";
     };
   };
 
