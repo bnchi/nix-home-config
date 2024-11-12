@@ -45,12 +45,12 @@ vim.g.rustfmt_fail_silently = 0
 require'lspconfig'.rust_analyzer.setup {
   settings = {
     ['rust-analyzer'] = {
-      --checkOnSave = {
-      --  enable = false
-      --},
-      --diagonstics = {
-      --  enable = false,
-      --},
+      checkOnSave = {
+        enable = false
+      },
+      diagonstics = {
+        enable = false,
+      },
       cargo = {
        allFeatures = true,
       },
@@ -59,3 +59,8 @@ require'lspconfig'.rust_analyzer.setup {
 }
 
 require 'lspconfig'.tsserver.setup { capabilities = capabilities }
+
+
+vim.keymap.set('n', '<leader>mc', ":make c<CR>")
+vim.keymap.set('n', '<leader>ro', ":RustTest<CR>")
+vim.keymap.set('n', '<leader>ra', ":RustTest!<CR>")
